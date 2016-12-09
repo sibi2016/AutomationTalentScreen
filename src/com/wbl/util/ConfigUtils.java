@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ConfigUtils {
 	
-	private static final String CONFIG_FILE="D:/Projects/AutomationTalentScreen/Resources/Config.properties";
+	private static final String CONFIG_FILE="C:/Users/Sibi/git/AutomationTalentScreen/Resources/Config.properties";
 	
 	
 	public String BROWSER;

@@ -15,7 +15,15 @@ public class LoginPageTest extends BaseTest {
 		lp = new LoginPage(driver);
 	}
 	
-	@Test
+	@DataProvider(name="login-data")
+	public Object[][] getLoginData()
+	{
+		Object[][] data = null;
+		
+		return data;
+	}
+	
+	@Test(dataProvider="login-data")
 	public void testLoginButton()
 	{
 		assertEquals(lp.checkLoginButton(),"https://dev.talentscreen.io/#/login");

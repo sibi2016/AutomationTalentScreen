@@ -22,10 +22,10 @@ public class PageDriver {
 			driver = new FirefoxDriver();
 			break;
 		case " chrome":
-			System.setProperty("webdriver.chrome.driver", "D:/Projects/AutomationTalentScreen/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "C:/Users/Sibi/git/AutomationTalentScreen/chromedriver.exe");
 			driver = new ChromeDriver();
 		case " ie":
-			System.setProperty("webdriver.ie.driver", "D:/Projects/AutomationTalentScreen/IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", "C:/Users/Sibi/git/AutomationTalentScreen/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		default:
 			driver = new FirefoxDriver();
