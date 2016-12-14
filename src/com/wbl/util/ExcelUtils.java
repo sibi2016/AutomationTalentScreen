@@ -1,55 +1,50 @@
 package com.wbl.util;
 
-import java.io.File;
 import java.io.FileInputStream;
-
 import java.io.IOException;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.log4j.Logger;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 	
+	private static Logger log = Logger.getLogger(ExcelUtils.class);
 	private static final String DATA_FILE_PATH="C:/Users/Sibi/git/AutomationTalentScreen/Resources/Test-Data/";
 	
 	public static Object[][] getData(String filename)
 	{
-		Object[][] data = null;
+		Object[][] rowsData = null;
 		
-		File file = new File(DATA_FILE_PATH+filename+".xlsx");
-		System.out.println("hiiii");
+		
+		
 		
 		try {
-			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(file));
-			XSSFSheet sheet = wb.getSheet("Sheet1");
-			System.out.println(sheet.getLastRowNum());
+			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(DATA_FILE_PATH+filename+".xlsx"));
+			XSSFSheet sheet = wb.getSheetAt(0);
 			int noOfRows = sheet.getLastRowNum()+1;
-			int k =0;
-			int l = 0;
-			data = new Object[noOfRows-1][];
+			rowsData = new Object[noOfRows-1][];
 			for(int i =1;i<noOfRows;i++){
 				
-				XSSFRow row = sheet.getRow(i);
-				System.out.println(row.getLastCellNum());
-				int noOfColumns = row.getLastCellNum()+1;
+				Row row = sheet.getRow(i);
+				int noOfColumns = row.getLastCellNum();
+				String[] colData = new String [noOfColumns];
 				for(int j=0;j<noOfColumns;j++){
-					XSSFCell cell = row.getCell((short)j);
-					data[k][l]= cell.getStringCellValue();
-					l++;
+					Cell cell = row.getCell(j);
+					colData[j]= cell.getStringCellValue();
 				}
-			k++;
+				rowsData[i-1]= colData;
 			}
-		wb.close();
+			
+		//wb.close();
 		} catch (IOException e) {
 		
-			e.printStackTrace();
+			log.error(e);
 		}
-		
-		
-		
-		return data;
+			
+		return rowsData;
 	}
 
 }
