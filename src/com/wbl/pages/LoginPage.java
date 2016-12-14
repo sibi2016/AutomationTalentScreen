@@ -1,6 +1,6 @@
 package com.wbl.pages;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 
 import com.wbl.base.BasePage;
@@ -12,11 +12,11 @@ public class LoginPage extends BasePage{
 		super(driver);
 		}
 	
-	public String checkLoginButton()
+	public String checkLoginButton(String uname,String pwd)
 	{
 		//driver.findElement(By.cssSelector(".navbar-btn.btn.btn-primary")).click();
-		driver.findElement(WblBy.getByObject("id-username")).sendKeys("sibi");
-		driver.findElement(WblBy.getByObject("id-password")).sendKeys("test123");
+		driver.findElement(WblBy.getByObject("id-username")).sendKeys(uname);
+		driver.findElement(WblBy.getByObject("id-password")).sendKeys(pwd);
 		driver.findElement(WblBy.getByObject("css-talentscreenbutton")).click();
 		return driver.getCurrentUrl();
 	}

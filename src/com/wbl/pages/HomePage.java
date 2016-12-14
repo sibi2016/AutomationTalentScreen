@@ -1,10 +1,8 @@
 package com.wbl.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-
 import com.wbl.base.BasePage;
+import com.wbl.util.WblBy;
 
 public class HomePage extends BasePage {
 	
@@ -15,7 +13,7 @@ public class HomePage extends BasePage {
 	public boolean isLogoPresent()
 	{
 		
-		boolean isLogoPresent = driver.findElement(By.cssSelector(".tslogo")).isDisplayed()? true:false;
+		boolean isLogoPresent = driver.findElement(WblBy.getByObject("css-logo")).isDisplayed()? true:false;
 		return isLogoPresent;
 	}
 	

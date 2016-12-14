@@ -4,6 +4,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import com.wbl.base.BaseTest;
 import com.wbl.pages.LoginPage;
+import com.wbl.util.ExcelUtils;
 
 public class LoginPageTest extends BaseTest {
 	
@@ -18,15 +19,15 @@ public class LoginPageTest extends BaseTest {
 	@DataProvider(name="login-data")
 	public Object[][] getLoginData()
 	{
-		Object[][] data = null;
+		Object[][] data = ExcelUtils.getData("login");
 		
 		return data;
 	}
 	
 	@Test(dataProvider="login-data")
-	public void testLoginButton()
+	public void testLoginButton(String uname,String pwd,String expected)
 	{
-		assertEquals(lp.checkLoginButton(),"https://dev.talentscreen.io/#/login");
+		assertEquals(lp.checkLoginButton(uname,pwd),expected);
 	}
 
 }
