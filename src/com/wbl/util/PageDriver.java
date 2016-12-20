@@ -21,10 +21,10 @@ public class PageDriver {
 		case "firefox":
 			driver = new FirefoxDriver();
 			break;
-		case " chrome":
+		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "C:/Users/Sibi/git/AutomationTalentScreen/chromedriver.exe");
 			driver = new ChromeDriver();
-		case " ie":
+		case "ie":
 			System.setProperty("webdriver.ie.driver", "C:/Users/Sibi/git/AutomationTalentScreen/IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		default:
