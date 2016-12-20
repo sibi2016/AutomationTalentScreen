@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import com.wbl.base.BaseTest;
 import com.wbl.pages.LoginPage;
 import com.wbl.util.ExcelUtils;
+import com.wbl.util.TakeScreenshotUtil;
 
 public class LoginPageTest extends BaseTest {
 	
@@ -33,6 +34,7 @@ public class LoginPageTest extends BaseTest {
 	{
 		log.info("Testing login-data....");
 		assertEquals(lp.checkLoginButton(uname,pwd),expected);
+		TakeScreenshotUtil.takeScreenshot(driver, "userlogin");
 	}
 
 }
